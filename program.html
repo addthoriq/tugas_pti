@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Latihan Pemrograman</title>
+        <style media="screen">
+            body{
+                text-align: center;
+                margin: auto;
+                padding: auto;
+            }
+            .judul{
+                color: blue;
+            }
+            .form{
+                color: red
+            }
+        </style>
+    </head>
+    <body>
+        <hr>
+        <h2 class="judul">MENCARI LUAS & KELILING LINGKARAN</h2>
+        <label class="form" for="jari">Masukkan Jari-jari: </label>
+        <input type="text" id="jari"><br>
+        <label class="form" for="luasling">Luas Lingkaran: </label>
+        <input type="text" id="luasling"><br>
+        <label class="form" for="kelling">Keliling Lingkaran: </label>
+        <input type="text" id="kelling"><br>
+        <button type="submit" id="hitungluas" onclick="hitung(document.getElementById('jari').value)">HitungLuas</button>
+
+        <hr>
+        <h2 class="judul">MENGECEK KATA POLINDROM</h2>
+        <label class="form" for="inputkata">Masukkan kata: </label>
+        <input type="text" id="inputkata"><br>
+        <label class="form" for="hasilkata">Hasil kata: </label>
+        <input type="text" id="hasilkata"><br>
+        <button type="submit" id="cekkata" onclick="polindrom(document.getElementById('inputkata').value)">Cek Kata</button>
+
+        <hr>
+        <h2 class="judul">BILANGAN PRIMA TERKECIL YANG LEBIH BESAR DARI N</h2>
+        <label class="form" for="inputbil">Input bilangan bulat N: </label>
+        <input type="text" id="inputbil"><br>
+        <label class="form" for="hasilbil">Bil Prima TerKecil Yang Lebih Besar dari N: </label>
+        <input type="text" id="hasilbil"><br>
+        <button type="submit" id="cek" onclick="cekPrima()">Cek</button>
+
+        <hr>
+        <a href="index.html">HOME</a>
+
+        <script type="text/javascript">
+            function hitung(x){
+                var r = x;
+                var phi = 3.14;
+                var luas = phi*r*r;
+                var kel = 2*phi*r;
+                document.getElementById('luasling').value = luas;
+                document.getElementById('kelling').value = kel;
+            }
+
+            function polindrom(x) {
+                var inputan = x;
+                var balik = balikkata(inputan);
+                if (inputan == balik) {
+                    document.getElementById('hasilkata').value = balik;
+                }else {
+                    document.getElementById('hasilkata').value = "Ini bukan kata Polindrom";
+                }
+            }
+
+            function balikkata(x){
+                var n =x.length;
+                var x1 ="";
+                for(i=0;i<n;i++)x1=x.charAt(i)+x1;
+                return x1
+            }
+
+        function prims(n) {
+        var p = false;
+        var ck = 0;
+        for (var i= 1; i <= n; i++) {
+                if (n % i == 0) {
+                    ck = ck+1;
+                }
+           }
+           if (ck == 2) {
+               prima = true;
+           }
+        return prima;
+        }
+
+        function cekPrima() {
+            var x = document.querySelector('#inputbil').value;
+            var hsl = document.querySelector('#hasilbil');
+            var inputan = parseInt(x);
+
+            if (isNaN(inputan)) {
+                hsl.value="gagal";
+            }else{
+                 while (true) {
+                    inputan=inputan+1;
+                    if(prims(inputan)==true){
+                            hsl.value = inputan;
+                            break;
+                        }
+                }
+            }
+        }
+
+        </script>
+    </body>
+</html>
